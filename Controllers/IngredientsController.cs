@@ -28,9 +28,9 @@ namespace PizzeriaAPI.Controllers
 
         // GET api/<IngredientsController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Ingredients Get(int id)
         {
-            return "value";
+            return _ingredientsRepository.GetById(id);
         }
 
         // POST api/<IngredientsController>
