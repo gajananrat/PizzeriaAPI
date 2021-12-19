@@ -19,7 +19,7 @@ namespace PizzeriaAPI.Data
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("PizzeriaAPI.Models.Categories", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.Categories", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -40,7 +40,7 @@ namespace PizzeriaAPI.Data
                     b.ToTable("Categories");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.Ingredients", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.Ingredients", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -57,7 +57,7 @@ namespace PizzeriaAPI.Data
                     b.ToTable("Ingredients");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.Order", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.Order", b =>
                 {
                     b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
@@ -122,7 +122,7 @@ namespace PizzeriaAPI.Data
                     b.ToTable("Orders");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.OrderDetail", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.OrderDetail", b =>
                 {
                     b.Property<int>("OrderDetailId")
                         .ValueGeneratedOnAdd()
@@ -150,7 +150,7 @@ namespace PizzeriaAPI.Data
                     b.ToTable("OrderDetails");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.PizzaIngredients", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.PizzaIngredients", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -172,7 +172,7 @@ namespace PizzeriaAPI.Data
                     b.ToTable("PizzaIngredients");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.Pizzas", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.Pizzas", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -208,7 +208,7 @@ namespace PizzeriaAPI.Data
                     b.ToTable("Pizzas");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.ShoppingCartItem", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.ShoppingCartItem", b =>
                 {
                     b.Property<int>("ShoppingCartItemId")
                         .ValueGeneratedOnAdd()
@@ -231,15 +231,15 @@ namespace PizzeriaAPI.Data
                     b.ToTable("ShoppingCartItems");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.OrderDetail", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.OrderDetail", b =>
                 {
-                    b.HasOne("PizzeriaAPI.Models.Order", "Order")
+                    b.HasOne("PizzeriaAPI.Model.Order", "Order")
                         .WithMany("OrderLines")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PizzeriaAPI.Models.Pizzas", "Pizza")
+                    b.HasOne("PizzeriaAPI.Model.Pizzas", "Pizza")
                         .WithMany()
                         .HasForeignKey("PizzaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -250,15 +250,15 @@ namespace PizzeriaAPI.Data
                     b.Navigation("Pizza");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.PizzaIngredients", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.PizzaIngredients", b =>
                 {
-                    b.HasOne("PizzeriaAPI.Models.Ingredients", "Ingredient")
+                    b.HasOne("PizzeriaAPI.Model.Ingredients", "Ingredient")
                         .WithMany("PizzaIngredients")
                         .HasForeignKey("IngredientId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("PizzeriaAPI.Models.Pizzas", "Pizza")
+                    b.HasOne("PizzeriaAPI.Model.Pizzas", "Pizza")
                         .WithMany("PizzaIngredients")
                         .HasForeignKey("PizzaId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -269,9 +269,9 @@ namespace PizzeriaAPI.Data
                     b.Navigation("Pizza");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.Pizzas", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.Pizzas", b =>
                 {
-                    b.HasOne("PizzeriaAPI.Models.Categories", "Category")
+                    b.HasOne("PizzeriaAPI.Model.Categories", "Category")
                         .WithMany("Pizzas")
                         .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -280,31 +280,31 @@ namespace PizzeriaAPI.Data
                     b.Navigation("Category");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.ShoppingCartItem", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.ShoppingCartItem", b =>
                 {
-                    b.HasOne("PizzeriaAPI.Models.Pizzas", "Pizza")
+                    b.HasOne("PizzeriaAPI.Model.Pizzas", "Pizza")
                         .WithMany()
                         .HasForeignKey("PizzaId");
 
                     b.Navigation("Pizza");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.Categories", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.Categories", b =>
                 {
                     b.Navigation("Pizzas");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.Ingredients", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.Ingredients", b =>
                 {
                     b.Navigation("PizzaIngredients");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.Order", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.Order", b =>
                 {
                     b.Navigation("OrderLines");
                 });
 
-            modelBuilder.Entity("PizzeriaAPI.Models.Pizzas", b =>
+            modelBuilder.Entity("PizzeriaAPI.Model.Pizzas", b =>
                 {
                     b.Navigation("PizzaIngredients");
                 });

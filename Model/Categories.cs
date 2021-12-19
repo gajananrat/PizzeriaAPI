@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace PizzeriaAPI.Models
+namespace PizzeriaAPI.Model
 {
     public class Categories
     {

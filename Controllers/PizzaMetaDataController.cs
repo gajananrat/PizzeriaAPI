@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json.Converters;
 using PizzeriaAPI.Model;
+using PizzeriaAPI.Model;
+using PizzeriaAPI.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +17,11 @@ namespace PizzeriaAPI.Controllers
     [ApiController]    
     public class PizzaMetaDataController : ControllerBase
     {
+        private readonly IPizzaRepository _pizzaRepository;
+        public PizzaMetaDataController(IPizzaRepository pizzaRepository)
+        {
+            _pizzaRepository = pizzaRepository;
+        }
         // GET: api/<BestSellerPizzasController>
         [HttpGet("/PizzaSize")]
         //[EnableCors("AllowOrigin")]
@@ -41,6 +48,14 @@ namespace PizzeriaAPI.Controllers
                 Convert.ToString(PizzaCrustEnum.WheatThinCrust),
                 Convert.ToString(PizzaCrustEnum.CheeseBurst)
             };
-        }        
+        }
+
+        // GET: api/<Pizzas>
+        [HttpGet("/Pizzas")]
+        //[EnableCors("AllowOrigin")]
+        public IEnumerable<Pizzas> GetPizzas()
+        {
+            return _pizzaRepository.GetAll();
+        }
     }
 }

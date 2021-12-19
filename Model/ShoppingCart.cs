@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PizzeriaAPI.Models
+namespace PizzeriaAPI.Model
 {
     public class ShoppingCart
     {
@@ -25,13 +25,13 @@ namespace PizzeriaAPI.Models
 
         public static ShoppingCart GetCart(IServiceProvider services)
         {
-            ISession session = services.GetRequiredService<IHttpContextAccessor>()?
-                .HttpContext.Session;
+            //ISession session = services.GetRequiredService<IHttpContextAccessor>()?
+            //    .HttpContext.Session;
 
             var context = services.GetService<AppDbContext>();
-            string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
+            string cartId =  Guid.NewGuid().ToString();
 
-            session.SetString("CartId", cartId);
+            //session.SetString("CartId", cartId);
 
             return new ShoppingCart(context) { ShoppingCartId = cartId };
         }

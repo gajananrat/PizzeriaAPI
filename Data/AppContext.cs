@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PizzeriaAPI.Models;
+using PizzeriaAPI.Model;
 
 namespace PizzeriaAPI.Data
 {

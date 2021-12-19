@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace PizzeriaAPI.Models
+namespace PizzeriaAPI.Model
 {
     public class PizzaIngredients
     {

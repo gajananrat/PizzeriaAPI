@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PizzeriaAPI.Data;
-using PizzeriaAPI.Models;
+using PizzeriaAPI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

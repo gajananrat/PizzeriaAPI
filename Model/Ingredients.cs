@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace PizzeriaAPI.Models
+namespace PizzeriaAPI.Model
 {
     public class Ingredients
     {
